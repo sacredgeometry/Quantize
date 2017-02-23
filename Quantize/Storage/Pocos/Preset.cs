@@ -4,7 +4,7 @@ using Umbraco.Core.Persistence.DatabaseAnnotations;
 
 namespace BJW.Quantize.Storage.Pocos
 {
-    [TableName("BJW.Quantize.Presets")]
+    [TableName("dbo.Quantize.Presets")]
     [PrimaryKey("Id", autoIncrement = true)]
     public class Preset
     {

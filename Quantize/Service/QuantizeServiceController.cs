@@ -15,7 +15,7 @@ namespace BJW.Quantize.Service
 		{
 			
 			
-			return propertyData;
+			return "";
 		}
 
 		public object LoadCurrentPresetForProperty(int id, string alias, string value)

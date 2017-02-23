@@ -1,17 +1,19 @@
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
- 
+using BJW.Quantize.Storage.Pocos;
+
 namespace BJW.Quantize.Storage
 {
    public class QuantizeEventHandler : ApplicationEventHandler
    {
        protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
        {
-           var db = applicationContext.DatabaseContext.Database;
- 
-           if (!db.TableExist("BJW.Quantize.Presets"))
+           var dbCtx = applicationContext.DatabaseContext;
+			var dbHelper = new DatabaseSchemaHelper(dbCtx.Database, applicationContext.ProfilingLogger.Logger, dbCtx.SqlSyntax);
+
+           if (!dbHelper.TableExist("dbo.Quantize.Presets"))
            {
-               db.CreateTable<Preset>(false);
+				dbHelper.CreateTable<Preset>(false);
            }
        }
    }

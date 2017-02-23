@@ -1,7 +1,7 @@
 using System;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
-using BJW.Quantize.Pocos;
+using BJW.Quantize.Storage.Pocos;
 
 namespace BJW.Quantize.Storage
 {
@@ -17,7 +17,7 @@ namespace BJW.Quantize.Storage
                Value = val
            };
  
-           db.Insert(Preset);
+           //db.Insert(Preset);
  
            return preset;
        }
@@ -26,9 +26,9 @@ namespace BJW.Quantize.Storage
        {
            var db = ApplicationContext.Current.DatabaseContext.Database;
  
-           var preset = db.SingleOrDefault(id);
+           //var preset = db.SingleOrDefault(id);
  
-           return preset;
+           return null;
        }
    }
 }
