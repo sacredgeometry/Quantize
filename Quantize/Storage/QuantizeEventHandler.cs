@@ -11,7 +11,7 @@ namespace BJW.Quantize.Storage
            var dbCtx = applicationContext.DatabaseContext;
 			var dbHelper = new DatabaseSchemaHelper(dbCtx.Database, applicationContext.ProfilingLogger.Logger, dbCtx.SqlSyntax);
 
-           if (!dbHelper.TableExist("dbo.Quantize.Presets"))
+           if (!dbHelper.TableExist("Quantize.Presets"))
            {
 				dbHelper.CreateTable<Preset>(false);
            }

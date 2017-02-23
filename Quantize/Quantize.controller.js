@@ -18,7 +18,7 @@
     $scope.makePreset = () => {
         if ($scope.presetName) {            
 
-            var values = angular.copy([].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias == "content" })[0].value);
+            var values = angular.copy([].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias === "content" })[0].value);
 
             $scope.model.value.presets.push(
                 {
@@ -32,7 +32,7 @@
     }
 
     $scope.loadPreset = () => {
-        [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias == "content" })[0].value = angular.copy($scope.model.value.selectedPreset.preset);
+        [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias === "content" })[0].value = angular.copy($scope.model.value.selectedPreset.preset);
     }
 
     $scope.deletePreset = () => {

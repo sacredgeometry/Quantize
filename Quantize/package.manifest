@@ -5,18 +5,16 @@
     name:  "Quantize",
     editor: {
       view: "~/App_Plugins/Quantize/Quantize.editor.html",
-      valueType: "JSON"
+      valueType: "JSON",
+	  hideLabel: true
     },
     prevalues: {
       fields: [{
-        label: "Min number of items",
-        key: "minNumberOfItems",
-        view: "number"
-      } , {
-          label: "Max number of items",
-          key: "maxNumberOfItems",
-          view: "number"
-      }]
+        label: "Property alias",
+        key: "propertyAlias",
+        view: "textstring"
+      }
+	  ]
     }
   }],
   javascript: [
