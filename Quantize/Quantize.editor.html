@@ -1,0 +1,17 @@
+﻿<div id="modelsBuilder" ng-controller="Quantize.controller">
+
+    <div ng-show="false">
+        Loading...
+    </div>
+
+    <div style="float: right;">
+        <h3>Presets</h3>
+        <div>
+            <input type="text" ng-model="presetName"/>
+            <select ng-model="model.value.selectedPreset" ng-options="preset.name for preset in model.value.presets"></select>
+            <button type="button" class="btn" ng-click="loadPreset()"><span>Load</span></button>
+            <button type="button" class="btn" ng-click="makePreset()"><span>Save</span></button>
+            <button type="button" class="btn" ng-click="deletePreset()"><span>Delete</span></button>
+        </div>
+    </div>
+</div>
