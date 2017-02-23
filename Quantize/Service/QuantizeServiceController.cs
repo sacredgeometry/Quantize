@@ -6,19 +6,14 @@ using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
 
-namespace UmbracoPlugins.App_Plugins.Quantize.Service
+namespace BJW.Quantize.Service
 {
 	[PluginController("BJW")]
 	public class QuantizeServiceController : UmbracoApiController
 	{
-		public string GetCurrentJsonDataForProperty(int id, string alias)
+		public string GetCurrentJsonDataForProperty(int id)
 		{
-			var output = string.Empty;
-
-			var umbHelper = new UmbracoHelper(UmbracoContext.Current);
-
-			var content = umbHelper.TypedContent(id);
-			var propertyData = content?.GetPropertyValue<string>(alias);
+			
 			
 			return propertyData;
 		}
