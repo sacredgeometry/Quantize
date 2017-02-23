@@ -32,13 +32,11 @@
     }
 
     $scope.loadPreset = () => {
-        if ($scope.presetName) {
-            [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias == "content" })[0].value = $scope.model.value.selectedPreset.preset;
-        }
+        [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias == "content" })[0].value = angular.copy($scope.model.value.selectedPreset.preset);
     }
 
     $scope.deletePreset = () => {
-        delete $scope.model.value.presets[$scope.model.value.presets.indexOf($scope.model.value.selectedPreset)];
+        $scope.model.value.presets.splice($scope.model.value.presets.indexOf($scope.model.value.selectedPreset), 1);
         $scope.model.value.selectedPreset = $scope.model.value.presets[$scope.model.value.presets.length - 1];
     }
 });

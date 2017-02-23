@@ -8,10 +8,10 @@
         <h3>Presets</h3>
         <div>
             <input type="text" ng-model="presetName"/>
-            <select ng-model="model.value.selectedPreset" ng-options="preset.name for preset in model.value.presets"></select>
-            <button type="button" class="btn" ng-click="loadPreset()"><span>Load</span></button>
             <button type="button" class="btn" ng-click="makePreset()"><span>Save</span></button>
-            <button type="button" class="btn" ng-click="deletePreset()"><span>Delete</span></button>
+            <select ng-show="model.value.presets.length !== 0" ng-model="model.value.selectedPreset" ng-options="preset.name for preset in model.value.presets"></select>            
+            <button ng-show="model.value.presets.length !== 0" type="button" class="btn" ng-click="loadPreset()"><span>Load</span></button>            
+            <button ng-show="model.value.presets.length !== 0" type="button" class="btn" ng-click="deletePreset()"><span>Delete</span></button>
         </div>
     </div>
 </div>
