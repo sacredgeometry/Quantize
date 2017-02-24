@@ -8,13 +8,13 @@ namespace BJW.Quantize.Storage
    {
        protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
        {
-           var dbCtx = applicationContext.DatabaseContext;
+			var dbCtx = applicationContext.DatabaseContext;
 			var dbHelper = new DatabaseSchemaHelper(dbCtx.Database, applicationContext.ProfilingLogger.Logger, dbCtx.SqlSyntax);
 
-           if (!dbHelper.TableExist("Quantize.Presets"))
-           {
+			if (!dbHelper.TableExist(Preset.TABLE_NAME))
+			{
 				dbHelper.CreateTable<Preset>(false);
-           }
+			}
        }
    }
 }

@@ -8,6 +8,7 @@
     }
 
     //debugger
+    // $scope.model.config
     //editorState.current.tabs
     // NOTE: I DONT NEED TO DO ANY OF THIS NONSENSE
     // [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })) // gets flattened list of properties on content
@@ -15,24 +16,36 @@
     // [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias == "content"})[0].value // Get property by alias
     // [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias == "content"})[0].value // Get property by alias and then get value
 
-    $scope.makePreset = () => {
-        if ($scope.presetName) {            
+    QuantizeResource.getPresets().then((data) => {
+        $scope.model.value.presets = data;
+    });
 
-            var values = angular.copy([].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias === "content" })[0].value);
+    $scope.addPreset = () => {
 
-            $scope.model.value.presets.push(
-                {
-                    name: $scope.presetName,
-                    preset: values
-                });
+        var value = angular.copy([].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias === "content" })[0].value);
 
-            $scope.presetName = null;
-            $scope.model.value.selectedPreset = $scope.model.value.presets[$scope.model.value.presets.length - 1]
+        if ($scope.presetName && value) {
+            QuantizeResource.addPresets($scope.presetName, JSON.stringify(value)).then((data) => {
+                
+                if (data) {
+                    $scope.model.value.presets.push(data);
+                    $scope.presetName = null;
+                    $scope.model.value.selectedPreset = $scope.model.value.presets[$scope.model.value.presets.length - 1]
+                }                
+            });
+           
+        }
+        else {
+            // Throw notification about name requirement
         }
     }
 
+    $scope.makePreset = () => {
+       
+    }
+
     $scope.loadPreset = () => {
-        [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias === "content" })[0].value = angular.copy($scope.model.value.selectedPreset.preset);
+        [].concat.apply([], editorState.current.tabs.map((e) => { return e.properties; })).filter((y) => { return y.alias === "content" })[0].value = angular.copy($scope.model.value.selectedPreset.Value);
     }
 
     $scope.deletePreset = () => {

@@ -28,7 +28,7 @@
             <select
                     ng-show="model.value.presets.length !== 0"
                     ng-model="model.value.selectedPreset"
-                    ng-options="preset.name for preset in model.value.presets"
+                    ng-options="preset.Name for preset in model.value.presets"
                     ng-change="loadPreset()">
                 <!--<option value="" style="color:lightgray">Please select an option&hellip;</option>-->
             </select>            
